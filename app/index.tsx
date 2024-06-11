@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { StatusBar } from "expo-status-bar";
 import { router, Redirect } from "expo-router";
 
@@ -7,9 +10,29 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../assets/logo.png";
 import path from "../assets/path.png";
 
+import { useAuth } from "../contexts/auth-context";
 import CustomButton from "../components/custom-button";
 
 export default function App() {
+  const { session } = useAuth();
+
+  const pageIsRelevant = async () => {
+    try {
+      const alreadyOpen = await AsyncStorage.getItem("already-open");
+      if (session || alreadyOpen) {
+        return router.replace("/home");
+      }
+
+      await AsyncStorage.setItem("already-open", String(true));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    pageIsRelevant();
+  }, []);
+
   return (
     <SafeAreaView className="h-full bg-background">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
