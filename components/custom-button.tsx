@@ -8,6 +8,7 @@ interface Props {
   textStyles?: string;
   isLoading?: boolean;
   filled?: boolean;
+  outlined?: boolean;
 }
 
 const CustomButton = (props: Props) => {
@@ -19,11 +20,19 @@ const CustomButton = (props: Props) => {
       className={`bg-primary rounded-xl min-h-[54px] 
       justify-center items-center ${props.containerStyles} 
       ${props.isLoading ? "opacity-50" : ""} 
-      ${props.filled ? "" : "bg-transparent"}`}
+      ${props.filled ? "" : "bg-transparent"}
+      ${
+        !props.filled && props.outlined
+          ? "bg-transparent border border-background"
+          : ""
+      }`}
     >
       <Text
         className={`text-background font-sfsemibold text-lg capitalize 
-        ${props.textStyles} ${props.filled ? "" : "text-primary underline"}`}
+        ${props.textStyles} ${props.filled ? "" : "text-primary underline"}
+        ${
+          !props.filled && props.outlined ? "text-background no-underline" : ""
+        }`}
       >
         {props.title}
       </Text>

@@ -3,7 +3,7 @@ export interface IUser {
   email: string;
   phone: string;
   password: string;
-  birthday: string;
+  birthday?: string;
 }
 
 export interface LoginRequest {
@@ -21,8 +21,8 @@ export interface AuthContextProps {
   session: boolean;
   isLoading: boolean;
   user: any;
-  signIn: (data: any) => Promise<any>;
-  register: (data: any) => Promise<any>;
+  signIn: (data: LoginRequest) => Promise<any>;
+  register: (data: RegisterRequest) => Promise<any>;
   // updateUser: (data: any) => void;
   signOut: () => Promise<void>;
 }

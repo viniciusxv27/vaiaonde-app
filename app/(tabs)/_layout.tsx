@@ -7,6 +7,7 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
 
 interface IconProps {
   name: string;
@@ -32,6 +33,7 @@ const TabIcon = ({ children, color, name, focused }: IconProps) => {
 const TabsLayout = () => {
   return (
     <>
+      <StatusBar style="light" />
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,

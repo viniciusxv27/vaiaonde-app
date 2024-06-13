@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(response.user);
       }
 
-      router.replace("/(tabs)/");
+      router.replace("/home");
     } catch (err) {
       console.log(err);
     } finally {
@@ -97,7 +97,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signOut = async () => {
     try {
       await AsyncStorage.removeItem(TOKEN_KEY);
-      router.push("/(tabs)/");
+      setUser(null);
+      router.push("/home");
     } catch (err) {}
   };
 

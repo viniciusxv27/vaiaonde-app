@@ -7,6 +7,7 @@ import { Link } from "expo-router";
 import images from "../../constants/images";
 import FormField from "../../components/form-field";
 import CustomButton from "../../components/custom-button";
+import { useAuth } from "../../contexts/auth-context";
 
 interface FormSchema {
   email: string;
@@ -14,17 +15,19 @@ interface FormSchema {
 }
 
 const SignInPage = () => {
+  const { signIn, isLoading } = useAuth();
+
   const [form, setForm] = useState<FormSchema>({
     email: "",
     password: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleSubmit = async () => {
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-    setIsSubmitting(false);
-    console.log(form);
+    try {
+      await signIn(form);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -61,7 +64,7 @@ const SignInPage = () => {
             title="Entrar"
             containerStyles="mt-7"
             handlePress={handleSubmit}
-            isLoading={isSubmitting}
+            isLoading={isLoading}
             filled
           />
 
