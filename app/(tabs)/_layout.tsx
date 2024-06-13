@@ -4,6 +4,7 @@ import { Tabs, Redirect } from "expo-router";
 import {
   Ionicons,
   AntDesign,
+  FontAwesome5,
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -73,11 +74,11 @@ const TabsLayout = () => {
         <Tabs.Screen
           name="roulete"
           options={{
-            title: "Home",
+            title: "Sorteios",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon color={color} name="Home" focused={focused}>
-                <Ionicons name="home-outline" color={color} size={24} />
+              <TabIcon color={color} name="Sorteios" focused={focused}>
+                <FontAwesome5 name="dice" color={color} size={24} />
               </TabIcon>
             ),
           }}
