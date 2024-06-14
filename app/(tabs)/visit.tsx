@@ -57,7 +57,7 @@ const Visit = () => {
             </Text>
             <View className="gap-y-3 items-center">
               <TouchableOpacity
-                onPress={() => handlePlaceNavigate("restaurants")}
+                onPress={() => handlePlaceNavigate("1")}
                 className="w-full bg-primary rounded-lg min-h-[100px] items-center 
                 justify-center flex-row gap-x-2"
               >
@@ -65,7 +65,7 @@ const Visit = () => {
                 <Text className="font-sfsemibold text-lg">Restaurantes</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handlePlaceNavigate("places")}
+                onPress={() => handlePlaceNavigate("2")}
                 className="w-full bg-primary rounded-lg min-h-[100px] items-center 
                 justify-center flex-row gap-x-2"
               >
@@ -77,7 +77,7 @@ const Visit = () => {
                 <Text className="font-sfsemibold text-lg">Lugares</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handlePlaceNavigate("events")}
+                onPress={() => handlePlaceNavigate("3")}
                 className="w-full bg-primary rounded-lg min-h-[100px] items-center 
                 justify-center flex-row gap-x-2"
               >

@@ -9,8 +9,8 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 
 interface Props extends TextInputProps {
-  value: string;
-  handleChange: (e: string) => void;
+  value?: string;
+  handleChange?: (e: string) => void;
   otherStyles?: string;
 }
 
