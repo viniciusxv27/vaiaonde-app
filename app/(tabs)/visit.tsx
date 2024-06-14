@@ -47,8 +47,8 @@ const Visit = () => {
       <ScrollView>
         <View className="flex-1 w-full min-h-[75vh] px-4 space-y-4">
           <SearchInput
-            value=""
-            handleChange={() => {}}
+            // value=""
+            // handleChange={() => {}}
             placeholder="Busque por todo o Vai aonde App"
           />
           <View className="gap-y-2">

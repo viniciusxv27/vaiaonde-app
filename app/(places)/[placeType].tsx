@@ -2,9 +2,7 @@ import { useState } from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  Dimensions,
   FlatList,
-  Image,
   RefreshControl,
   StyleSheet,
   Text,
@@ -13,11 +11,7 @@ import {
 } from "react-native";
 
 import { Stack, useLocalSearchParams } from "expo-router";
-import {
-  Ionicons,
-  AntDesign,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import { api } from "../../lib/api";
 import { useData } from "../../lib/hooks/useData";
@@ -118,8 +112,7 @@ const Place = () => {
             </View>
             <View>
               <SearchInput
-                // value=""
-                // handleChange={() => {}}
+                placeType="1"
                 placeholder={`Busque em ${getPlaceTypeName(placeType)}`}
               />
             </View>
