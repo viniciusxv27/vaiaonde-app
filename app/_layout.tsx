@@ -1,11 +1,13 @@
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack, router } from "expo-router";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { AuthProvider } from "../contexts/auth-context";
+import { AuthProvider, useAuth } from "../contexts/auth-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
+  const { session } = useAuth();
   const [fontsLoaded, error] = useFonts({
     "Sf-Black": require("../assets/fonts/Sf-Black.otf"),
     "Sf-Bold": require("../assets/fonts/Sf-Bold.ttf"),
@@ -17,6 +19,19 @@ const RootLayout = () => {
     "Sf-Thin": require("../assets/fonts/Sf-Thin.otf"),
     "Sf-Ultralight": require("../assets/fonts/Sf-Ultralight.otf"),
   });
+
+  const pageIsRelevant = async () => {
+    try {
+      const alreadyOpen = await AsyncStorage.getItem("already-open");
+      if (session || alreadyOpen) {
+        return router.replace("/home");
+      }
+
+      await AsyncStorage.setItem("already-open", String(true));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     if (error) throw error;

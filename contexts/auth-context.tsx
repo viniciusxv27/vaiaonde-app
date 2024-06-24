@@ -10,7 +10,12 @@ import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { AuthContextProps, IUser, LoginRequest, RegisterRequest } from "./auth";
-import { recoverUserData, signInRequest } from "../lib/auth-tests";
+import {
+  recoverUserData,
+  registerRequest,
+  signInRequest,
+} from "../lib/auth-tests";
+import { api } from "../lib/api";
 
 const AuthContext = createContext({} as AuthContextProps);
 
@@ -57,14 +62,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         throw new Error("Erro ao efetuar login");
       }
 
-      const { token } = data;
+      if (!data) return null;
 
-      if (token) {
-        await AsyncStorage.setItem(TOKEN_KEY, token);
-        // api.defaults.headers["Authorization"] = `Bearer ${token}`;
+      const { authToken } = data;
+
+      if (authToken) {
+        await AsyncStorage.setItem(TOKEN_KEY, authToken);
+        api.defaults.headers["Authorization"] = `Bearer ${authToken}`;
       }
 
-      const response = await recoverUserData(token);
+      const response = await recoverUserData(authToken);
       if (response && response.user) {
         setUser(response.user);
       }
@@ -77,7 +84,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const register = async ({ name, email, password }: RegisterRequest) => {
+  const register = async ({
+    name,
+    email,
+    password,
+    phone,
+  }: RegisterRequest) => {
     if (!name || !email || !password) {
       throw new Error("Os campos não podem estar vazios");
     }
@@ -85,10 +97,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
 
     try {
-      // await registerRequest({name, email, password});
+      const { error } = await registerRequest({ name, email, password, phone });
+
+      if (error) {
+        throw new Error("Error to create your account");
+      }
+
       router.replace("/sign-in");
     } catch (err) {
       console.log(err);
+      throw new Error((err as Error).message);
     } finally {
       setIsLoading(false);
     }

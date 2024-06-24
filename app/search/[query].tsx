@@ -42,12 +42,17 @@ const Search = () => {
   if (!query) return null;
 
   async function getPlaces() {
+    if (!query) return null;
+    const searchQuery = Array.isArray(query)
+      ? query[0].toLowerCase()
+      : query.toLowerCase();
+
     const { data } = await api.get<{ places: IPlace[] }>(
-      `/places/${placeType ?? "1"}`
+      `/places/${placeType ?? "1"}?search=${searchQuery}`
     );
 
     const places = data?.places.filter((place) =>
-      place.name.toLowerCase().includes(query as string)
+      place.name.toLowerCase().includes(searchQuery)
     );
 
     return places;

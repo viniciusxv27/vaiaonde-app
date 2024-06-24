@@ -112,7 +112,7 @@ const Place = () => {
             </View>
             <View>
               <SearchInput
-                placeType="1"
+                placeType={Array.isArray(placeType) ? placeType[0] : placeType}
                 placeholder={`Busque em ${getPlaceTypeName(placeType)}`}
               />
             </View>

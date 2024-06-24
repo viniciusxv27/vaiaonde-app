@@ -15,3 +15,5 @@ const setAuthorizationHeader = async () => {
     console.log(err);
   }
 };
+
+setAuthorizationHeader();

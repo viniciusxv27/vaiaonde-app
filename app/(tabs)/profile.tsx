@@ -41,7 +41,11 @@ const Profile = () => {
               </Link>
             </>
           ) : (
-            <UserBadge user={user} updatePath="/home" singOut={signOut} />
+            <UserBadge
+              user={user}
+              updatePath="/edit-profile"
+              singOut={signOut}
+            />
           )}
         </View>
       </ScrollView>

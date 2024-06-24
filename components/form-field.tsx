@@ -11,8 +11,9 @@ import { Feather } from "@expo/vector-icons";
 
 interface Props extends TextInputProps {
   title: string;
-  value: string;
-  handleChange: (e: string) => void;
+  value?: string;
+  handleChange?: (e: string) => void;
+  errors?: string;
   otherStyles?: string;
 }
 
@@ -21,6 +22,7 @@ const FormField = ({
   value,
   handleChange,
   otherStyles,
+  errors,
   ...props
 }: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -29,8 +31,9 @@ const FormField = ({
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className="text-base text-gray-100 font-medium">{title}</Text>
       <View
-        className="border-2 border-black-200 w-full rounded-md h-16 
-        px-4 bg-black-100 focus:border-primary flex-row items-center"
+        className={`border-2 ${
+          errors ? "border-red-500" : "border-black-200"
+        } w-full rounded-md h-16 px-4 bg-black-100 focus:border-primary flex-row items-center`}
       >
         <TextInput
           className="flex-1 text-white font-sfsemibold text-base"
@@ -52,6 +55,9 @@ const FormField = ({
           </TouchableOpacity>
         )}
       </View>
+      {errors && (
+        <Text className="text-xs font-sfthin text-red-500/60">{errors}</Text>
+      )}
     </View>
   );
 };

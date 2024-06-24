@@ -7,7 +7,14 @@ import { Link } from "expo-router";
 import images from "../../constants/images";
 import FormField from "../../components/form-field";
 import CustomButton from "../../components/custom-button";
+
 import { useAuth } from "../../contexts/auth-context";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  RequestLoginType,
+  requestLoginSchema,
+} from "../../lib/schemas/auth-schemas";
 
 interface FormSchema {
   email: string;
@@ -17,14 +24,22 @@ interface FormSchema {
 const SignInPage = () => {
   const { signIn, isLoading } = useAuth();
 
-  const [form, setForm] = useState<FormSchema>({
-    email: "",
-    password: "",
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RequestLoginType>({
+    resolver: zodResolver(requestLoginSchema),
+    mode: "onBlur",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
-  const handleSubmit = async () => {
+  const handleLogin = async (data: RequestLoginType) => {
     try {
-      await signIn(form);
+      await signIn(data);
     } catch (err) {
       console.log(err);
     }
@@ -45,25 +60,43 @@ const SignInPage = () => {
             <Text className="underline text-primary">Vai Aonde App</Text>
           </Text>
 
-          <FormField
-            title="Email"
-            value={form.email}
-            handleChange={(e) => setForm({ ...form, email: e })}
-            keyboardType="email-address"
-            otherStyles="mt-7"
-            placeholder="seumail@exeplo.com"
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <FormField
+                title="Email"
+                value={value}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                keyboardType="email-address"
+                otherStyles="mt-7"
+                placeholder="seumail@exeplo.com"
+                errors={errors.email?.message}
+              />
+            )}
+            name="email"
+            rules={{ required: true }}
           />
-          <FormField
-            title="Senha"
-            value={form.password}
-            handleChange={(e) => setForm({ ...form, password: e })}
-            otherStyles="mt-7"
-            placeholder="Sua senha"
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <FormField
+                title="Senha"
+                value={value}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                otherStyles="mt-7"
+                placeholder="Sua senha"
+                errors={errors.password?.message}
+              />
+            )}
+            name="password"
+            rules={{ required: true }}
           />
           <CustomButton
             title="Entrar"
             containerStyles="mt-7"
-            handlePress={handleSubmit}
+            handlePress={handleSubmit(handleLogin)}
             isLoading={isLoading}
             filled
           />
