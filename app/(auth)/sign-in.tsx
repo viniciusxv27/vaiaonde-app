@@ -72,6 +72,7 @@ const SignInPage = () => {
                 otherStyles="mt-7"
                 placeholder="seumail@exeplo.com"
                 errors={errors.email?.message}
+                autoCapitalize="none"
               />
             )}
             name="email"
@@ -88,6 +89,7 @@ const SignInPage = () => {
                 otherStyles="mt-7"
                 placeholder="Sua senha"
                 errors={errors.password?.message}
+                autoCapitalize="none"
               />
             )}
             name="password"

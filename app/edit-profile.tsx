@@ -78,6 +78,7 @@ const EditProfile = () => {
                   otherStyles="mt-4"
                   placeholder="seumail@exeplo.com"
                   errors={errors.email?.message}
+                  autoCapitalize="none"
                 />
               )}
               name="email"

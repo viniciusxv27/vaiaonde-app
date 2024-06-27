@@ -37,7 +37,6 @@ const SignUpPage = () => {
   const handleRegister = async (data: RequestRegisterType) => {
     try {
       await register(data);
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -87,6 +86,7 @@ const SignUpPage = () => {
                 otherStyles="mt-4"
                 placeholder="seumail@exeplo.com"
                 errors={errors.email?.message}
+                autoCapitalize="none"
               />
             )}
             name="email"
@@ -121,6 +121,7 @@ const SignUpPage = () => {
                 otherStyles="mt-4"
                 placeholder="Sua senha"
                 errors={errors.password?.message}
+                autoCapitalize="none"
               />
             )}
             name="password"
