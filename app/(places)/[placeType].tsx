@@ -139,5 +139,3 @@ const Place = () => {
 };
 
 export default Place;
-
-const styles = StyleSheet.create({});

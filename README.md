@@ -25,7 +25,7 @@ Stack: React Native, Expo, Axios.
   - [x] Página Visitar;
   - [x] Página Conta;
 
-- [ ] Integração com api para página home e perfil do usuário;
+- [x] Integração com api para página home e perfil do usuário;
   - [x] Integração da Api com a Home;
   - [x] Integração da Api com a página de Perfil;
 
@@ -33,8 +33,8 @@ Stack: React Native, Expo, Axios.
 
 - [x] Adicionar os filtros em todas as listagens de Estabelecimentos;
 
-  - [x] Adicionar filto de busca nas páginas;
-  - [ ] Adicionar filto de busca geral;
+  - [x] Adicionar filto de busca nas páginas(Restaurantes, Lugares e Eventos);
+  - [x] Adicionar filto de busca geral;
   - [ ] Adicionar na página de Restaurantes;
   - [ ] Adicionar na página de Lugares;
   - [ ] Adicionar na página de Eventos;

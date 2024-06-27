@@ -90,6 +90,7 @@ const Visit = () => {
             className="bg-slate-100/80 px-4 py-4 rounded-lg 
             flex-row justify-between items-center"
             activeOpacity={0.7}
+            onPress={() => router.push("/club")}
           >
             <Text className="font-sfsemibold text-base text-slate-500">
               Explorar o <Text className="text-slate-900">VAClub?</Text>
