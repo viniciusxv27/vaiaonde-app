@@ -6,7 +6,7 @@ Stack: React Native, Expo, Axios.
 
 ### Metas semana 1 (29/04 - 04/05):
 
-- [ ] Implementar sistema de registro (Integração com a Api) PRIORITY;
+- [x] Implementar sistema de registro (Integração com a Api) PRIORITY;
 
 - [x] Implementar Página de Conta do Usuário PRIORITY;
 
@@ -43,7 +43,7 @@ Stack: React Native, Expo, Axios.
 - [ ] Finalizar as páginas iniciais;
 
   - [ ] Página de Club;
-  - [ ] Página de Sorteio;
+  - [ ] Página de Sorteios;
 
 - [ ] Aplicar funcionalidade nos filtros;
   - [ ] Perto de Mim;

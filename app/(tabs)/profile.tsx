@@ -7,7 +7,6 @@ import { Link } from "expo-router";
 
 import { useAuth } from "../../contexts/auth-context";
 import { Entypo } from "@expo/vector-icons";
-import InfoField from "../../components/info-field";
 import UserBadge from "../../components/user-badge";
 
 const Profile = () => {
@@ -19,7 +18,7 @@ const Profile = () => {
         <View className="w-full justify-center min-h-[85vh] px-4 my-6">
           {user && session && (
             <Text className="text-2xl font-sfsemibold text-center text-primary-100">
-              Conta
+              Minha Conta
             </Text>
           )}
           {!user || !session ? (

@@ -1,10 +1,11 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 import { router } from "expo-router";
 
 import InfoField from "./info-field";
 import { IUser } from "../contexts/auth";
+import Icons from "../constants/images";
 
 interface Props {
   user: IUser;
@@ -15,9 +16,14 @@ interface Props {
 const UserBadge = ({ user, updatePath, singOut }: Props) => {
   return (
     <View
-      className="w-[95%] h-[80%] relative mt-10 mx-auto px-4 
+      className="w-[95%] h-[80%] relative mt-6 mx-auto px-4 
       py-4 bg-primary rounded-xl items-center"
     >
+      <Image
+        source={Icons.darkIcon}
+        resizeMode="contain"
+        className="absolute h-60 w-60 z-10 top-1/2 -translate-y-[80px] opacity-5"
+      />
       <View className="w-[30%] h-4 bg-background rounded-lg" />
 
       <Text className="text-2xl mt-10 font-sfsemibold">{user.name}</Text>

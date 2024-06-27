@@ -48,7 +48,7 @@ const Search = () => {
       : query.toLowerCase();
 
     const { data } = await api.get<{ places: IPlace[] }>(
-      `/places/${placeType ?? "1"}?search=${searchQuery}`
+      `/places/${placeType ?? ""}?search=${searchQuery}`
     );
 
     const places = data?.places.filter((place) =>

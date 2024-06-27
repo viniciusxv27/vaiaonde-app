@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {
+  NativeSyntheticEvent,
   TextInput,
   TextInputProps,
+  TextInputSubmitEditingEventData,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -27,6 +29,12 @@ const SearchInput = ({ otherStyles, placeType, ...props }: Props) => {
     setQuery("");
   };
 
+  const handleEnterPress = (
+    e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+  ) => {
+    handleSubmitQuery(placeType);
+  };
+
   return (
     <View
       className="border-2 border-black-200 w-full rounded-md h-16 
@@ -39,6 +47,8 @@ const SearchInput = ({ otherStyles, placeType, ...props }: Props) => {
         placeholder={props.placeholder}
         placeholderTextColor="#7b7b8b"
         onChangeText={setQuery}
+        returnKeyType="search"
+        onSubmitEditing={handleEnterPress}
         {...props}
       />
 
