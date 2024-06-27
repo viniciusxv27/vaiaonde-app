@@ -31,7 +31,7 @@ Stack: React Native, Expo, Axios.
 
 ### Metas semana 2 (06/05 - 11/05):
 
-- [x] Adicionar os filtros em todas as listagens de Estabelecimentos;
+- [ ] Adicionar os filtros em todas as listagens de Estabelecimentos;
 
   - [x] Adicionar filto de busca nas páginas(Restaurantes, Lugares e Eventos);
   - [x] Adicionar filto de busca geral;
@@ -43,7 +43,9 @@ Stack: React Native, Expo, Axios.
 - [ ] Finalizar as páginas iniciais;
 
   - [ ] Página de Club;
-  - [ ] Página de Sorteios;
+    - [x] Design da página(Com Club);
+    - [ ] Design da página(Sem Club);
+  - [x] Página de Sorteios;
 
 - [ ] Aplicar funcionalidade nos filtros;
   - [ ] Perto de Mim;
